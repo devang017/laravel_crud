@@ -59,10 +59,4 @@ Edit Category
 
     </div>
 </div>
-
-@endsection
-
-
-@section('script')
-@vite('resources/admin/custom/js/category/edit.js')
 @endsection

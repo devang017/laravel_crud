@@ -67,8 +67,3 @@ Create Category
 </div>
 
 @endsection
-
-
-@section('script')
-@vite('resources/admin/custom/js/category/create.js')
-@endsection

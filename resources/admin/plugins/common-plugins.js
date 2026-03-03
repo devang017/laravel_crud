@@ -17,9 +17,15 @@ select2();
 $.fn.select2.defaults.set('theme', 'bootstrap-5');
 $.fn.select2.defaults.set('width', '100%');
 
+// sweetalert
 import Swal from 'sweetalert2';
-
 window.Swal = Swal;
+
+// tagify
+import Tagify from '@yaireo/tagify'
+import '@yaireo/tagify/dist/tagify.css'
+
+window.Tagify = Tagify
 
 // overlayscrollbars
 import { OverlayScrollbars } from "overlayscrollbars";
