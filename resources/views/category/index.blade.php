@@ -1,6 +1,6 @@
 @extends('partials.app')
 @section('title')
-Users
+Categories
 @endsection
 @section('content')
 <div class="app-content-header">
@@ -9,12 +9,12 @@ Users
         <!--begin::Row-->
         <div class="row">
             <div class="col-sm-6">
-                <h3 class="mb-0">Users</h3>
+                <h3 class="mb-0">Categories</h3>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-end">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Users</li>
+                    <li class="breadcrumb-item active" aria-current="page">Categories</li>
                 </ol>
             </div>
         </div>
@@ -32,12 +32,12 @@ Users
             <div class="card-header">
                 <div class="row w-100 align-items-center">
                     <div class="col-md-6">
-                        <h3 class="card-title mb-0">User List</h3>
+                        <h3 class="card-title mb-0">Categories List</h3>
                     </div>
 
                     <div class="col-md-6 text-end">
-                        <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm">
-                            <i class="fas fa-plus"></i> Create User
+                        <a href="{{ route('categories.create') }}" class="btn btn-primary btn-sm">
+                            <i class="fas fa-plus"></i> Create Category
                         </a>
                     </div>
                 </div>
@@ -51,15 +51,11 @@ Users
                         <table class="table table-bordered table-striped align-middle" id="dataTable">
                             <thead class="table-light">
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Roles</th>
-                                    <th>Action</th>
-
+                                    <th width="5%">Id</th>
+                                    <th width="80%">Name</th>
+                                    <th width="15%">Action</th>
                                 </tr>
                             </thead>
-
                         </table>
                     </div>
 
@@ -76,7 +72,7 @@ Users
 
 @section('script')
 <script>
-    let userIndexRoute = "{{ route('users.index') }}";
+    let categoryIndexRoute = "{{ route('categories.index') }}";
 </script>
-@vite(['resources/admin/custom/js/user/datatable.js'])
+@vite(['resources/admin/custom/js/category/datatable.js'])
 @endsection

@@ -69,6 +69,16 @@
                     @endcan
                 </li>
                 @endcanany
+                @can('category_list')
+                <li class="nav-item {{ activeMenu('categories') }}">
+                    <a href="{{ route('categories.index') }}" class="nav-link">
+                        <i class="nav-icon bi bi-speedometer"></i>
+                        <p>
+                            Categories
+                        </p>
+                    </a>
+                </li>
+                @endcan
             </ul>
             <!--end::Sidebar Menu-->
         </nav>

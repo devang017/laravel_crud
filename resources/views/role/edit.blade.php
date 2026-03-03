@@ -1,5 +1,9 @@
 @extends('partials.app')
 
+@section('title')
+Edit Role
+@endsection
+
 @section('content')
 
 <div class="app-content-header">

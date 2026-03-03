@@ -1,4 +1,7 @@
 @extends('partials.app')
+@section('title')
+Edit Permission
+@endsection
 
 @section('content')
 
