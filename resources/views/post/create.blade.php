@@ -75,6 +75,9 @@ Create Post
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Tags</label>
                             <input type="text" name="tags" id="tags" class="form-control">
+                            @error('tags')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="col-md-6 mb-3">

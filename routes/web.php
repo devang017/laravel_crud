@@ -25,12 +25,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::resource('roles', RoleController::class);
     Route::resource('permissions', PermissionController::class);
-    Route::resource('categories', CategoryController::class);
 });
 
 Route::middleware(['auth', 'role:admin|author'])->group(function () {
     Route::resource('posts', PostController::class);
     Route::get('/tags/search', [TagController::class, 'search'])->name('tags.search');
+    Route::resource('categories', CategoryController::class);
 });
 
 require __DIR__ . '/auth.php';

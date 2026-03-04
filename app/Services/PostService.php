@@ -20,7 +20,7 @@ class PostService
      */
     public function getAllPosts()
     {
-        return $this->postModel->newQuery()->with('user', 'categories', 'tags');
+        return $this->postModel->newQuery()->with('user', 'categories', 'tags')->where('user_id', auth()->user()->id);
     }
 
     /**
@@ -45,6 +45,48 @@ class PostService
             $post->tags()->attach($tagsIds);
 
             $post->categories()->attach($postData['categories']);
+        });
+    }
+
+    public function getSinglePost($id)
+    {
+        return $this->postModel->newQuery()->with('user', 'categories', 'tags')->findOrFail($id);
+    }
+
+    /**
+     * updatePost post.
+     *
+     * @param array $postData
+     * @return void
+     */
+    public function updatePost(array $postData, string $id)
+    {
+        DB::transaction(function () use ($postData, $id) {
+            $post = $this->getSinglePost($id);
+
+            $post->update($postData);
+
+            $tags = array_map(function ($tag) {
+                return ['name' => $tag['value']];
+            }, $postData['tags']);
+
+            $this->tagservice->storeTagsBatch($tags);
+
+            $tagsIds = $this->tagservice->getTagIdsFromNames(array_column($tags, 'name'));
+
+            $post->tags()->sync($tagsIds);
+
+            $post->categories()->sync($postData['categories']);
+        });
+    }
+
+    public function destroyPost($id)
+    {
+        DB::transaction(function () use ($id) {
+            $post = $this->getSinglePost($id);
+            $post->tags()->detach();
+            $post->categories()->detach();
+            $post->delete();
         });
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Post\StorePostRequest;
+use App\Http\Requests\Post\UpdatePostRequest;
 use App\Services\CategoryService;
 use App\Services\PostService;
 use Illuminate\Http\Request;
@@ -61,15 +62,25 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $post = $this->postService->getSinglePost($id);
+        $categories = $this->categoryService->getCategoryList();
+
+        return view('post.edit', compact('post', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdatePostRequest $request, string $id)
     {
-        //
+        try {
+            $requestData = $request->validated() + ['user_id' => auth()->id()];
+            $this->postService->updatePost($requestData, $id);
+        } catch (\Throwable $e) {
+            return redirect()->route('posts.index')->with('error', trans('admin.message.something_wrong'));
+        }
+
+        return redirect()->route('posts.index')->with('success', trans('admin.message.updated'));
     }
 
     /**
@@ -77,7 +88,12 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $this->postService->destroyPost($id);
+        } catch (\Throwable $e) {
+            return redirect()->route('posts.index')->with('error', trans('admin.message.something_wrong'));
+        }
+        return redirect()->route('posts.index')->with('success', trans('admin.message.deleted'));
     }
 
     public function initPostsDataTable(object $postsData)
@@ -91,8 +107,8 @@ class PostController extends Controller
                 return $postsData->tags->isNotEmpty() ? $postsData->tags->pluck('name')->implode(', ') : '-';
             })
             ->addColumn('action', function ($postsData) {
-                $editUrl = route('categories.edit', $postsData->id);
-                $deleteUrl = route('categories.destroy', $postsData->id);
+                $editUrl = route('posts.edit', $postsData->id);
+                $deleteUrl = route('posts.destroy', $postsData->id);
                 return '<a href="' . $editUrl . '" class="btn btn-sm btn-primary">Edit</a>
                         <form action="' . $deleteUrl . '" method="POST" style="display:inline-block;">
                             ' . csrf_field() . '
