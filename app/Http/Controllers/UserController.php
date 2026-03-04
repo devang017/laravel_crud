@@ -127,4 +127,39 @@ class UserController extends Controller
             ->rawColumns(['action'])
             ->make(true);
     }
+
+    // public function initUsersDataTable($users)
+    // {
+    //     return DataTables::of($users)
+    //         ->addIndexColumn()
+
+    //         ->addColumn('roles', function ($user) {
+    //             $roles = DB::table('role_user')
+    //                 ->join('roles', 'role_user.role_id', '=', 'roles.id')
+    //                 ->where('role_user.user_id', $user->id)
+    //                 ->pluck('roles.name')
+    //                 ->implode(', ');
+
+    //             return $roles ?: '-';
+    //         })
+
+    //         ->addColumn('action', function ($users) {
+    //             $editUrl = route('users.edit', $users->id);
+    //             $deleteUrl = route('users.destroy', $users->id);
+
+    //             return '
+    //             <a href="' . $editUrl . '" class="btn btn-sm btn-primary">Edit</a>
+    //             <form action="' . $deleteUrl . '" method="POST" style="display:inline-block;">
+    //                 ' . csrf_field() . '
+    //                 ' . method_field('DELETE') . '
+    //                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm(\'Are you sure?\')">
+    //                     Delete
+    //                 </button>
+    //             </form>
+    //         ';
+    //         })
+
+    //         ->rawColumns(['action'])
+    //         ->make(true);
+    // }
 }

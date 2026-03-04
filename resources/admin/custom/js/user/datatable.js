@@ -16,3 +16,22 @@ $('#dataTable').DataTable({
     ]
 });
 
+
+// $('#dataTable').DataTable({
+//     processing: true,
+//     serverSide: true,
+//     ajax: {
+//         url: userIndexRoute,
+//         type: 'GET'
+//     },
+//     columns: [
+//         { data: 'id', name: 'id' },   // important
+//         { data: 'name', name: 'name' },
+//         { data: 'email', name: 'email' },
+//         { data: 'roles', name: 'roles', orderable: false, searchable: false },
+//         { data: 'action', name: 'action', orderable: false, searchable: false }
+//     ],
+//     order: [[0, "desc"]]
+// });
+
+

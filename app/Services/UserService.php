@@ -22,6 +22,9 @@ class UserService
     public function getAllUsers(Request $request)
     {
         return $this->userModel->newQuery()->with('roles');
+
+        // return DB::table('users')
+        //     ->select('id', 'name', 'email');
     }
 
     /**
