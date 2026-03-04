@@ -109,7 +109,7 @@ class UserController extends Controller
 
     public function initUsersDataTable(object $users)
     {
-        return DataTables::of($users)
+        return DataTables::eloquent($users)
             ->addIndexColumn()
             ->addColumn('roles', function ($user) {
                 return $user->roles->isNotEmpty() ? $user->roles->pluck('name')->implode(', ') : '-';
