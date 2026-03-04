@@ -79,6 +79,16 @@
                     </a>
                 </li>
                 @endcan
+                @can('post_list')
+                <li class="nav-item {{ activeMenu('posts') }}">
+                    <a href="{{ route('posts.index') }}" class="nav-link">
+                        <i class="nav-icon bi bi-speedometer"></i>
+                        <p>
+                            Posts
+                        </p>
+                    </a>
+                </li>
+                @endcan
             </ul>
             <!--end::Sidebar Menu-->
         </nav>

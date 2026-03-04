@@ -67,4 +67,14 @@ class CategoryService
         $category->posts()?->detach();
         $category->delete();
     }
+
+    /**
+     * Retrieves a list of all categories with their IDs and names.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getCategoryList()
+    {
+        return $this->categoryModel->select('id', 'name')->get();
+    }
 }
