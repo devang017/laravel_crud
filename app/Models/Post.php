@@ -5,19 +5,14 @@ namespace App\Models;
 use App\Models\Category;
 use App\Models\Tag;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Attributes\Table;
 use Illuminate\Database\Eloquent\Model;
 
+#[Table('posts')]
+#[Fillable(['user_id', 'title', 'content', 'status'])]
 class Post extends Model
 {
-    protected $table = 'posts';
-
-    protected $fillable = [
-        'user_id',
-        'title',
-        'content',
-        'status',
-    ];
-
     /**
      * Get the user that owns the post.
      *

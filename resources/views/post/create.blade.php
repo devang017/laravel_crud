@@ -97,7 +97,7 @@ Create Post
                         Cancel
                     </a>
                     <button type="submit" class="btn btn-primary">
-                        Save User
+                        Save Post
                     </button>
                 </div>
 

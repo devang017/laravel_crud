@@ -3,15 +3,14 @@
 namespace App\Models;
 
 use App\Models\Post;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Attributes\Table;
 use Illuminate\Database\Eloquent\Model;
 
+#[Table('categories')]
+#[Fillable(['name'])]
 class Category extends Model
 {
-    protected $table = 'categories';
-
-    protected $fillable = ['name'];
-
-
     /**
      * Retrieve the posts associated with this category.
      *

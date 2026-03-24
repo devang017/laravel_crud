@@ -3,16 +3,16 @@
 namespace App\Models;
 
 use App\Models\Role;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Attributes\Table;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+#[Table('permissions')]
+#[Fillable(['name', 'slug', 'description'])]
 class Permission extends Model
 {
     use HasFactory;
-
-    protected $table = 'permissions';
-
-    protected $fillable = ['name', 'slug', 'description'];
 
     /**
      * Retrieves the roles associated with this permission.
