@@ -13,6 +13,9 @@ git pull origin master
 # Install composer dependencies
 composer install --optimize-autoloader --no-dev --no-interaction
 
+# Build assets
+npm run build
+
 # Clearing Cache
 php artisan cache:clear
 php artisan config:clear
