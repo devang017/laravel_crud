@@ -10,8 +10,17 @@ echo "Deployment started ..."
 # Pull the latest version of the app
 git pull origin master
 
+# Run database migrations
+php artisan migrate --force
+
 # Install composer dependencies
 composer install --optimize-autoloader --no-dev --no-interaction
+
+# Install npm dependencies
+npm install --production
+
+# Queue Restart
+php artisan queue:restart
 
 # Build assets
 npm run build
@@ -22,9 +31,6 @@ php artisan config:clear
 
 # Recreate cache
 php artisan optimize
-
-# Run database migrations
-php artisan migrate --force
 
 # Turn OFF Maintenance mode
 php artisan up
