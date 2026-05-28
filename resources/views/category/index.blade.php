@@ -32,7 +32,7 @@ Categories
             <div class="card-header">
                 <div class="row w-100 align-items-center">
                     <div class="col-md-6">
-                        <h3 class="card-title mb-0">Category</h3>
+                        <h3 class="card-title mb-0">Category List</h3>
                     </div>
 
                     <div class="col-md-6 text-end">
