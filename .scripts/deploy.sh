@@ -17,7 +17,7 @@ php artisan migrate --force
 composer install --optimize-autoloader --no-dev --no-interaction
 
 # Install npm dependencies
-npm install
+npm install --include=dev
 
 # Queue Restart
 php artisan queue:restart
